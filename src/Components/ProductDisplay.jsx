@@ -1,8 +1,11 @@
 import star_icon from '../assets/star_icon.png';
 import star_dull_icon from '../assets/star_dull_icon.png';
+import { useContext } from 'react';
+import { ShopContext } from '../Context/ShopContext';
 
 export default function ProductDisplay(props) {
     const {product} = props;
+    const {addToCart} = useContext(ShopContext);
   return (
     <div className='product-display flex mx-[170px]'>
         <div className='display-left flex gap-[17px]'>
@@ -43,7 +46,7 @@ export default function ProductDisplay(props) {
                     <div className='py-[13px] px-[20px] bg-[#fbfbfb] border border-[#ebebeb] cursor-pointer rounded-[5px]'>XXL</div>
                 </div>
             </div>
-            <button className='py-[20px] px-[40px] w-[200px] font-semibold text-white bg-[#ff4141] mb-10 border-none outline-none cursor-pointer '>ADD TO CART</button>
+            <button onClick={()=>{addToCart(product.id)}} className='py-[20px] px-[40px] w-[200px] font-semibold text-white bg-[#ff4141] mb-10 border-none outline-none cursor-pointer '>ADD TO CART</button>
             <p className='display-right-category mt-[5px]'><span className='font-semibold'>Category</span>Women , T-shirt, Crop Top</p>
             <p className='display-right-category mt-[5px]'><span className='font-semibold'>Tags :</span>Modern, Latest</p>
         </div>
