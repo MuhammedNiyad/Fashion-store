@@ -19,7 +19,7 @@ export default function Hero() {
                 <img src={arrow_icon} />
             </div>
         </div>
-        <div className='hero-right flex flex-1 items-center justify-center'>
+        <div className='hero-right flex flex-1 items-center justify-center '>
             <img src={hero_image}/>
         </div>
     </div>
