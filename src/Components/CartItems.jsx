@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ShopContext } from '../Context/ShopContext'
 import remove_icon from '../assets/cart_cross_icon.png'
 
 
 export default function CartItems() {
-    const {all_product, cartItems,removeFromCart} = useContext(ShopContext);
+    const {all_product, cartItems,removeFromCart, getTotalCartAmount} = useContext(ShopContext);
+    let finalAmount = getTotalCartAmount();
   return (
     <div className='cart-items my-[100px] mx-[170px]'>
         <div className="foramt-main flex flex-row items-center gap-[75px] py-5 text-[#454545] text-lg font-semibold">
@@ -36,30 +37,30 @@ export default function CartItems() {
         })}
         <div className="cartItems-down flex my-[100px] ">
             <div className="cart-total flex-1 flex-col mr-[200px] gap-[40px]">
-                <h1>Cart Total</h1>
+                <h1 className='mb-3 text-lg'>Cart Total</h1>
                 <div>
                     <div className="cartitems-total-item flex justify-between py-[15px] ">
                         <p>Subtotal</p>
-                        <p>${0}</p>
+                        <p>${getTotalCartAmount()}</p>
                     </div>
                     <hr />
                     <div className="cartitem-total-item flex justify-between py-[15px] ">
                         <p>Shipping fee</p>
-                        <p>Free</p>
+                        <p>{finalAmount<100 && finalAmount>0? "$"+50:'Free'}</p>
                     </div>
                     <hr />
                     <div className="cartitem-total-item flex justify-between py-[15px] ">
                         <h3>Total</h3>
-                        <h3>${0}</h3>
+                        <h3>${finalAmount<100 && finalAmount>0? finalAmount+50 : finalAmount}</h3>
                     </div>
                 </div>
                 <button className='w-[262px] h-[58px] outline-none border-none bg-[#ff5a5a] text-white font-semibold cursor-pointer'>Proceed to checkout</button>
             </div>
             <div className="cartitems-promocode flex-1">
                 <p className='text-[#555] '>If you have a promo code, Enter it here</p>
-                <div className="cartitems-promobox w-[504px] mt-[20px] pl-[20px] h-[58px] bg-[#eaeaea]">
-                    <input type="text" placeholder='promo code' className='border-none bg-transparent w-[330px] h-[50px] ' />
-                    <button>Submit</button>
+                <div className="cartitems-promobox flex w-[504px] mt-[15px] pl-[20px] h-[58px] bg-[#eaeaea]">
+                    <input type="text" placeholder='promo code' className='border-none outline-none bg-transparent w-[330px] h-[50px] ' />
+                    <button className='w-[170px] h-[58px] bg-black text-white cursor-pointer'>Submit</button>
                 </div>
             </div>
         </div>
