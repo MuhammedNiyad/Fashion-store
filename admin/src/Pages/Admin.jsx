@@ -6,11 +6,9 @@ import ListProduct from '../Components/ListProduct';
 
 export default function Admin() {
   return (
-    <div className='admin flex sm:flex-col'>
+    <div className='admin flex flex-col sm:flex-row'>
         <Sidebar />
-        <h1 className=''>Hello</h1>
         <Routes>
-            <>Hello</>
             <Route path='/addproduct' element={<AddProduct />} />
             <Route path='/listproduct' element={<ListProduct />} />
         </Routes>

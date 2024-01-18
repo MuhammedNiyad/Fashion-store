@@ -11,7 +11,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('copy the mongoDb connection link here......!');
+mongoose.connect('mongodb+srv://niyad:niyad@cluster1.kcx0h2d.mongodb.net/FashionStore?retryWrites=true&w=majority');
 
 // API creation
 
@@ -64,7 +64,7 @@ const Product = mongoose.model("Product",{
     },
     old_price:{
         type:Number,
-        required: ture,
+        required: true,
     },
     date:{
         type:Date,
